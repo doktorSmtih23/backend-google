@@ -1,0 +1,15 @@
+const express = require('express');
+const bodyParser = require('body-parser');
+require('dotenv').config();
+
+
+const app = express();
+
+app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use('/', require('./routes/auth'));
+
+app.listen(process.env.PORT || 3001, () => {
+    const port = process.env.PORT || 3001;
+    console.log(`Servidor corriendo en el puerto ${ port }`);
+});
